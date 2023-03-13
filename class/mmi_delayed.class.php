@@ -78,7 +78,7 @@ abstract class MMI_Delayed_1_1 extends MMI_Singleton_1_0
 		$q = $this->db->query($sql);
 		list($user_id) = $q->fetch_row();
 		if (empty($user) || !is_object($user))
-				$user = new User($this->db);
+			$user = new User($this->db);
 		$user->fetch($user_id);
 		$user->getrights();
 

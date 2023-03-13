@@ -63,3 +63,8 @@ abstract class MMI_Generic_1_0
 		$this->db = $db;
 	}
 }
+
+abstract class MMI_Generic extends MMI_Generic_1_0
+{
+
+}

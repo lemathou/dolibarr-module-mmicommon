@@ -54,3 +54,6 @@ abstract class MMI_Singleton_1_0
 	}
 }
 
+abstract class MMI_Singleton extends MMI_Singleton_1_0
+{
+}
