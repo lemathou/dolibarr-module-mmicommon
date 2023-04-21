@@ -57,6 +57,10 @@ abstract class MMI_Delayed_1_1 extends MMI_Singleton_1_0
 	 */
 	public function __destruct()
 	{
+		// Rien à faire on stoppe direct
+		if (empty($this->list))
+			return;
+		
 		// Check/Recreate enviroment
 		$this->dbinit();
 		$this->user_autoload();
@@ -71,7 +75,7 @@ abstract class MMI_Delayed_1_1 extends MMI_Singleton_1_0
 		$this->dbinit();
 	}
 
-	public function user_autoload()
+	protected function user_autoload()
 	{
 		global $user;
 		$sql = 'SELECT rowid FROM '.MAIN_DB_PREFIX.'user WHERE login="synchro"';
@@ -85,25 +89,34 @@ abstract class MMI_Delayed_1_1 extends MMI_Singleton_1_0
 		return $user;
 	}
 
-	public function hookmanager_verif()
+	protected function hookmanager_verif()
 	{
 		global $hookmanager;
 		if (empty($hookmanager))
 			$hookmanager = new HookManager($this->db);
 	}
 
-	public function lang_verif()
+	protected function lang_verif()
 	{
 		global $conf, $langs;
 		if (empty($langs))
 			$langs = new Translate("", $conf);
 	}
 
-	public function dbinit()
+	/**
+	 * On recréé le connecteur MySQL
+	 * qui a probablement été détruit par le garbage_collector avant le passage à __destruct()
+	 * @todo vérifier dans l'objet global db si le connecteur est là et ne pas le recréer pour rien
+	 */
+	protected function dbinit()
 	{
+		global $db;
 		$this->db = new DoliDBMysqli('mysql', static::$_db_params['host'], static::$_db_params['user'], static::$_db_params['pass'], static::$_db_params['name']);
+		$db = $this->db;
 		//var_dump($this->db); die();
 	}
+
+	/* Méthodes publiques */
 
 	public function add($value)
 	{
@@ -122,7 +135,6 @@ abstract class MMI_Delayed_1_1 extends MMI_Singleton_1_0
 	public function execute_value($value)
 	{
 		// TO OVERLOAD
-		
 	}
 }
 
