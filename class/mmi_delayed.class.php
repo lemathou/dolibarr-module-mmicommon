@@ -111,8 +111,10 @@ abstract class MMI_Delayed_1_1 extends MMI_Singleton_1_0
 	protected function dbinit()
 	{
 		global $db;
-		$this->db = new DoliDBMysqli('mysql', static::$_db_params['host'], static::$_db_params['user'], static::$_db_params['pass'], static::$_db_params['name']);
-		$db = $this->db;
+		if (empty($this->db))
+			$this->db = new DoliDBMysqli('mysql', static::$_db_params['host'], static::$_db_params['user'], static::$_db_params['pass'], static::$_db_params['name']);
+		if (empty($db))
+			$db = $this->db;
 		//var_dump($this->db); die();
 	}
 
