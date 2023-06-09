@@ -28,6 +28,8 @@ require_once '../main_load.inc.php';
 
 // Parameters
 $arrayofparameters = array(
+	'MMICORE_UPDATE_NOTE_TRIGGER_UPDATE'=>array('type'=>'yesno', 'enabled'=>1),
+	'MMICORE_UPDATE_NOTE_TRIGGER_UPDATE_LIST'=>array('type'=>'textarea', 'enabled'=>1),
 );
 
 //require_once('../../mmicommon/admin/mmisetup_1.inc.php');

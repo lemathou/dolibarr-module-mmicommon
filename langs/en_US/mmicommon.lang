@@ -28,11 +28,8 @@ ModuleMMICommonDesc = Fonctionnalités de base pour l'ensemble des modules MMI
 MMICommonSetup = MMICommon setup
 Settings = Settings
 MMICommonSetupPage = MMICommon setup page
-MMICOMMON_MYPARAM1 = My param 1
-MMICOMMON_MYPARAM1Tooltip = My param 1 tooltip
-MMICOMMON_MYPARAM2=My param 2
-MMICOMMON_MYPARAM2Tooltip=My param 2 tooltip
-
+MMICORE_UPDATE_NOTE_TRIGGER_UPDATE = Déclencher le trigger de mise à jour de l'objet lorsqu'on met à jour une note 
+MMICORE_UPDATE_NOTE_TRIGGER_UPDATE_LIST = Liste des types d'objet sur lesquels on déclenche le trigger en cas de mise à jour de note (un par ligne)
 
 #
 # About page
@@ -40,14 +37,3 @@ MMICOMMON_MYPARAM2Tooltip=My param 2 tooltip
 About = About
 MMICommonAbout = About MMICommon
 MMICommonAboutPage = MMICommon about page
-
-#
-# Sample page
-#
-MyPageName = My page name
-
-#
-# Sample widget
-#
-MyWidget = My widget
-MyWidgetDescription = My widget description
