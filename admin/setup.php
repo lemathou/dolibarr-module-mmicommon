@@ -31,6 +31,7 @@ $arrayofparameters = array(
 	'MMICORE_UPDATE_NOTE_TRIGGER_UPDATE'=>array('type'=>'yesno', 'enabled'=>1),
 	'MMICORE_UPDATE_NOTE_TRIGGER_UPDATE_LIST'=>array('type'=>'textarea', 'enabled'=>1),
 	'MMICORE_SHOW_PICTO_NOTE'=>array('type'=>'yesno', 'enabled'=>1),
+	'MAIN_USE_XML_TAGS'=>array('type'=>'yesno', 'enabled'=>1),
 );
 
 //require_once('../../mmicommon/admin/mmisetup_1.inc.php');
