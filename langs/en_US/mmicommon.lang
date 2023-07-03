@@ -31,6 +31,7 @@ MMICommonSetupPage = MMICommon setup page
 MMICORE_UPDATE_NOTE_TRIGGER_UPDATE = Déclencher le trigger de mise à jour de l'objet lorsqu'on met à jour une note 
 MMICORE_UPDATE_NOTE_TRIGGER_UPDATE_LIST = Liste des types d'objet sur lesquels on déclenche le trigger en cas de mise à jour de note (un par ligne)
 MMICORE_SHOW_PICTO_NOTE = Afficher un picto warning sur les liens client si on a une note privée, et l'afficher dans la popup 
+MMICORE_SHOW_PICTO_NOTE_COLOR = Couleur du picto warning (#999 par défaut)
 MAIN_USE_XML_TAGS = Utiliser des balises XML (<br /> au lieu de <br > par exemple)
 
 #
