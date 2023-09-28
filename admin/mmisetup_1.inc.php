@@ -262,6 +262,10 @@ if ($action == 'edit') {
 				if (true) {
 					$form->select_comptes($conf->global->{$constname}, $constname, 0, '', 1);
 				}
+			} elseif ($val['type'] == 'user') {
+				if (true) {
+					echo $form->select_dolusers($conf->global->{$constname}, $constname, 1);
+				}
 			} elseif (false && $val['type'] == 'date') {
 				$selected = '';
 				$displayhour = 0;
