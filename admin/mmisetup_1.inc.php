@@ -250,6 +250,18 @@ if ($action == 'edit') {
 					$selected = (empty($conf->global->$constname) ? '' : $conf->global->$constname);
 					$form->select_produits($selected, $constname, '', 0);
 				}
+			} elseif ($val['type'] == 'company') {
+				if (true) {
+					echo $form->select_company($conf->global->{$constname}, $constname, '', '', 0);
+				}
+			} elseif ($val['type'] == 'types_paiements') {
+				if (true) {
+					echo $form->select_types_paiements($conf->global->{$constname}, $constname, '', 0);
+				}
+			} elseif ($val['type'] == 'comptes') {
+				if (true) {
+					$form->select_comptes($conf->global->{$constname}, $constname, 0, '', 1);
+				}
 			} elseif (false && $val['type'] == 'date') {
 				$selected = '';
 				$displayhour = 0;

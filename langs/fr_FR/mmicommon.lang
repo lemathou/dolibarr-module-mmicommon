@@ -1,0 +1,42 @@
+# Copyright (C) 2022 Mathieu Moulin <mathieu@iprospective.fr>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+#
+# Generic
+#
+
+# Module label 'ModuleMMICommonName'
+ModuleMMICommonName = MMI Module Commun
+# Module description 'ModuleMMICommonDesc'
+ModuleMMICommonDesc = Fonctionnalités de base pour l'ensemble des modules MMI
+
+#
+# Admin page
+#
+MMICommonSetup = MMICommon setup
+Settings = Settings
+MMICommonSetupPage = MMICommon setup page
+MMICORE_UPDATE_NOTE_TRIGGER_UPDATE = Déclencher le trigger de mise à jour de l'objet lorsqu'on met à jour une note 
+MMICORE_UPDATE_NOTE_TRIGGER_UPDATE_LIST = Liste des types d'objet sur lesquels on déclenche le trigger en cas de mise à jour de note (un par ligne)
+MMICORE_SHOW_PICTO_NOTE = Afficher un picto warning sur les liens client si on a une note privée, et l'afficher dans la popup 
+MMICORE_SHOW_PICTO_NOTE_COLOR = Couleur du picto warning (#999 par défaut)
+MAIN_USE_XML_TAGS = Utiliser des balises XML (<br /> au lieu de <br > par exemple)
+
+#
+# About page
+#
+About = About
+MMICommonAbout = About MMICommon
+MMICommonAboutPage = MMICommon about page
