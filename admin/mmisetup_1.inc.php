@@ -180,7 +180,7 @@ if ($action == 'edit') {
 			$setupnotempty++;
 			print '<tr class="oddeven"><td>';
 			$tooltiphelp = (($langs->trans($constname . 'Tooltip') != $constname . 'Tooltip') ? $langs->trans($constname . 'Tooltip') : '');
-			print '<span id="helplink'.$constname.'" class="spanforparamtooltip">'.$form->textwithpicto($langs->trans($constname), $tooltiphelp, 1, 'info', '', 0, 3, 'tootips'.$constname).'</span>';
+			print '<span id="helplink'.$constname.'" class="spanforparamtooltip">'.($val['type'] == 'separator' ?'<b>' :'').$form->textwithpicto($langs->trans($constname), $tooltiphelp, 1, 'info', '', 0, 3, 'tootips'.$constname).($val['type'] == 'separator' ?'</b>' :'').'</span>';
 			print '</td><td>';
 
 			if ($val['type'] == 'textarea') {
@@ -273,6 +273,8 @@ if ($action == 'edit') {
 				//echo $form->selectDate(implode('/', array_reverse(explode('-', $conf->global->{$constname}))), $constname, $displayhour, $displaymin, 1, 'form'.$constname, 1, 0);
 				print '<input name="'.$constname.'" type="text" class="hasDatepicker" value="'.$conf->global->{$constname}.'">';
 				//print '<input name="'.$constname.'"  class="flat '.(empty($val['css']) ? 'minwidth200' : $val['css']).'" value="'.$conf->global->{$constname}.'">';
+			} elseif ($val['type'] == 'separator') {
+				print '';
 			} else {
 				print '<input name="'.$constname.'"  class="flat '.(empty($val['css']) ? 'minwidth200' : $val['css']).'" value="'.$conf->global->{$constname}.'">';
 			}
@@ -297,7 +299,7 @@ if ($action == 'edit') {
 				$setupnotempty++;
 				print '<tr class="oddeven"><td>';
 				$tooltiphelp = (($langs->trans($constname . 'Tooltip') != $constname . 'Tooltip') ? $langs->trans($constname . 'Tooltip') : '');
-				print $form->textwithpicto($langs->trans($constname), $tooltiphelp);
+				print ($val['type'] == 'separator' ?'<b>' :'').$form->textwithpicto($langs->trans($constname), $tooltiphelp).($val['type'] == 'separator' ?'</b>' :'');
 				print '</td><td>';
 
 				if ($val['type'] == 'textarea') {
