@@ -38,6 +38,8 @@ abstract class MMI_Generic_1_0
 			return;
 		
 		global $langs;
+		if (empty($langs))
+			return;
 		$langs->loadLangs(is_array($lang) ?$lang :array($lang));
 	}
 
