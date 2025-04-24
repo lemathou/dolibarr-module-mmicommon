@@ -193,6 +193,11 @@ if ($action == 'edit') {
 				$doleditor->Create();
 			} elseif ($val['type'] == 'yesno') {
 				print $form->selectyesno($constname, $conf->global->{$constname}, 1);
+			} elseif ($val['type'] == 'array') {
+				foreach($val['list'] as &$value) {
+					$value = $langs->trans($value);
+				}
+				print $form->selectarray($constname, $val['list'], $conf->global->{$constname});
 			} elseif (preg_match('/emailtemplate:/', $val['type'])) {
 				include_once DOL_DOCUMENT_ROOT . '/core/class/html.formmail.class.php';
 				$formmail = new FormMail($db);
@@ -308,6 +313,10 @@ if ($action == 'edit') {
 					print  $conf->global->{$constname};
 				} elseif ($val['type'] == 'yesno') {
 					print ajax_constantonoff($constname);
+				} elseif ($val['type'] == 'array') {
+					if($conf->global->{$constname} && isset($val['list'][$conf->global->{$constname}])) {
+						echo $langs->trans($val['list'][$conf->global->{$constname}]);
+					}
 				} elseif (preg_match('/emailtemplate:/', $val['type'])) {
 					include_once DOL_DOCUMENT_ROOT . '/core/class/html.formmail.class.php';
 					$formmail = new FormMail($db);
