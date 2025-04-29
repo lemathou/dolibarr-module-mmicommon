@@ -54,6 +54,49 @@ abstract class MMI_Singleton_1_0
 	}
 }
 
-abstract class MMI_Singleton extends MMI_Singleton_1_0
+/**
+ * Classe Singleton => une seule instalce possible, initialisée à l'appel
+ */
+abstract class MMI_Singleton_2_0 extends MMI_Generic_2_0
+{
+	// CLASS
+
+	protected static $_instance;
+
+	public static function __init()
+	{
+		global $db;
+		
+		parent::__init();
+
+		if (empty(static::$_instance))
+			static::$_instance = new static($db);
+	}
+
+	/**
+	 * @return static
+	 */
+	public static function _getInstance()
+	{
+		return static::$_instance;
+	}
+	/**
+	 * @return static
+	 */
+	public static function _instance()
+	{
+		return static::$_instance;
+	}
+
+	// OBJECT
+
+	protected function __construct($db)
+	{
+		parent::__construct($db);
+		// Forced Singleton
+	}
+}
+
+abstract class MMI_Singleton extends MMI_Singleton_2_0
 {
 }

@@ -66,7 +66,14 @@ abstract class MMI_Generic_1_0
 	}
 }
 
-abstract class MMI_Generic extends MMI_Generic_1_0
+/**
+ * @version 2.0
+ */
+abstract class MMI_Generic_2_0 extends MMI_Generic_1_0
+{
+}
+
+abstract class MMI_Generic extends MMI_Generic_2_0
 {
 
 }
