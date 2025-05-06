@@ -16,6 +16,8 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+require_once 'mmi_generic.class.php';
+
 /**
  * Classe Singleton => une seule instalce possible, initialisée à l'appel
  */
