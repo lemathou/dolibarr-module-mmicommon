@@ -25,9 +25,9 @@ ModuleMMICommonDesc = Fonctionnalités de base pour l'ensemble des modules MMI
 #
 # Admin page
 #
-MMICommonSetup = MMICommon setup
-Settings = Settings
-MMICommonSetupPage = MMICommon setup page
+MMICommonSetup = Configuration MMI Common
+Settings = Configuration
+MMICommonSetupPage = Configuration module MMI Common
 MMICORE_UPDATE_NOTE_TRIGGER_UPDATE = Déclencher le trigger de mise à jour de l'objet lorsqu'on met à jour une note 
 MMICORE_UPDATE_NOTE_TRIGGER_UPDATE_LIST = Liste des types d'objet sur lesquels on déclenche le trigger en cas de mise à jour de note (un par ligne)
 MMICORE_SHOW_PICTO_NOTE = Afficher un picto warning sur les liens client si on a une note privée, et l'afficher dans la popup 
@@ -37,6 +37,6 @@ MAIN_USE_XML_TAGS = Utiliser des balises XML (<br /> au lieu de <br > par exempl
 #
 # About page
 #
-About = About
-MMICommonAbout = About MMICommon
-MMICommonAboutPage = MMICommon about page
+About = A propos
+MMICommonAbout = A propos de MMI Common
+MMICommonAboutPage = A propos du module MMI Common
