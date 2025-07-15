@@ -5,20 +5,21 @@ if (!defined('DOL_VERSION'))
 if (empty($modulename))
 	die('Dolibarr module name must be specified');
 
-$page_name = $modulename."Setup";
-$page_title = $modulename."SetupPage";
-
 global $langs, $user;
 
-// Libraries
-require_once DOL_DOCUMENT_ROOT."/core/lib/admin.lib.php";
-require_once '../../mmicommon/lib/mmi_1.lib.php';
-//require_once "../class/myclass.class.php";
-	
 // Access control
 if (!$user->admin) {
 	accessforbidden();
 }
+
+$help_url = '';
+$page_name = $modulename."Setup";
+$page_title = $modulename."SetupPage";
+
+// Libraries
+require_once DOL_DOCUMENT_ROOT."/core/lib/admin.lib.php";
+dol_include_once('mmicommon/lib/mmi_1.lib.php');
+//require_once "../class/myclass.class.php";
 
 // Translations
 $langs->loadLangs(array("admin", $modulecontext));
@@ -149,8 +150,6 @@ if ($action == 'updateMask') {
  */
 
 $form = new Form($db);
-
-$help_url = '';
 
 llxHeader('', $langs->trans($page_name), $help_url);
 

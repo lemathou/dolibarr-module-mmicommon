@@ -1,5 +1,5 @@
 <?php
-/* Copyright (C) 2022 Moulin Mathieu <contact@iprospective.fr>
+/* Copyright (C) 2022-2025 Moulin Mathieu <contact@iprospective.fr>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,9 +16,9 @@
  */
 
 /**
- * \file    mmiproject/lib/mmiproject.lib.php
- * \ingroup mmiproject
- * \brief   Library files with common functions for MMIProject
+ * \file    mmicommon/lib/mmi_1.lib.php
+ * \ingroup mmicommon
+ * \brief   Library files with common functions for MMI modules
  */
 
 /**
@@ -30,6 +30,7 @@ function MMIAdminPrepareHead()
 {
 	global $langs, $conf, $modulename, $moduledir, $modulecontext;
 
+	$langs->load('mmicommon@mmicommon');
 	$langs->load($modulecontext);
 
 	$h = 0;
