@@ -31,6 +31,7 @@ if (!$res) {
 $moduleclassname = 'mod'.$modulename;
 $moduledir = strtolower($modulename);
 $modulecontext = $moduledir."@".$moduledir;
+$modulelogo = $moduledir.".png@".$moduledir;
 $moduleprefix = strtoupper($modulename);
 
 // Loading

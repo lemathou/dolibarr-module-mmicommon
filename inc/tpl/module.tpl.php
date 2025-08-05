@@ -23,6 +23,8 @@
 
 if (!defined('DOL_VERSION'))
 	die('Dolibarr must be loaded');
+if (empty($tpl_name))
+	die('Dolibarr template name must be specified');
 
 require_once DOL_DOCUMENT_ROOT.'/core/class/html.formfile.class.php';
 
@@ -49,6 +51,9 @@ print load_fiche_titre($langs->trans($modulename."Area"), '', $modulelogo);
 
 print '<div class="fichecenter">';
 
+if (file_exists('inc/'.$tpl_name.'.inc.php')) {
+	require_once 'inc/'.$tpl_name.'.inc.php';
+}
 require_once 'tpl/'.$tpl_name.'.tpl.php';
 
 print '</div>';
