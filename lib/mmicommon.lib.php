@@ -62,7 +62,7 @@ function mmicommonAdminPrepareHead()
 	//); // to remove a tab
 	complete_head_from_modules($conf, $langs, null, $head, $h, 'mmicommon@mmicommon');
 
-	complete_head_from_modules($conf, $langs, $object, $head, $h, 'mmicommon@mmicommon', 'remove');
+	//complete_head_from_modules($conf, $langs, $object, $head, $h, 'mmicommon@mmicommon', 'remove');
 
 	return $head;
 }

@@ -1,5 +1,11 @@
 <?php
 
+// Protection to avoid direct call of file
+if (empty($conf) || !is_object($conf)) {
+	print "Error, file can't be called as URL";
+	exit;
+}
+
 if ($action== 'addcomment') {
 	echo 'ADD COMMENT';
 }
