@@ -40,3 +40,4 @@ MAIN_USE_XML_TAGS = Utiliser des balises XML (<br /> au lieu de <br > par exempl
 About = A propos
 MMICommonAbout = A propos de MMI Common
 MMICommonAboutPage = A propos du module MMI Common
+MMICORE_MERGE_THIRDPARTY_BUYPRICE_TRIGGERS = Fusion de tiers : déclencher les triggers sur les prix d'achat déplacés (met à jour le fournisseur par défaut des produits et notifie la synchro ; refuse la fusion en cas de réf fournisseur en double)

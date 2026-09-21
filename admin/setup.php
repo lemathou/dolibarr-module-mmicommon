@@ -32,6 +32,8 @@ $arrayofparameters = array(
 	'MMICORE_UPDATE_NOTE_TRIGGER_UPDATE_LIST'=>array('type'=>'textarea', 'enabled'=>1),
 	'MMICORE_SHOW_PICTO_NOTE'=>array('type'=>'yesno', 'enabled'=>1),
 	'MMICORE_SHOW_PICTO_NOTE_COLOR'=>array('type'=>'text', 'enabled'=>1),
+	// RM3234 : patch du coeur — la fusion de tiers déclenche les triggers des prix d'achat
+	'MMICORE_MERGE_THIRDPARTY_BUYPRICE_TRIGGERS'=>array('type'=>'yesno', 'enabled'=>1),
 	'MAIN_USE_XML_TAGS'=>array('type'=>'yesno', 'enabled'=>1),
 );
 
