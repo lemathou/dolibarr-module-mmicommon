@@ -197,6 +197,18 @@ if ($action == 'edit') {
 					$value = $langs->trans($value);
 				}
 				print $form->selectarray($constname, $val['list'], $conf->global->{$constname});
+			} elseif ($val['type'] == 'multiarray') {
+				foreach($val['list'] as &$value) {
+					$value = $langs->trans($value);
+				}
+				print $form->multiselectarray($constname, $val['list'], explode(',', $conf->global->{$constname}));
+				echo '<input type="hidden" name="'.$constname.'" id="'.$constname.'_multi" value="'.$conf->global->{$constname}.'">';
+				echo '<script>'."\r\n"
+				.'$("#'.$constname.'").change(function(){'."\r\n"
+				.'let newval = $(this).val();'."\r\n"
+				.'$("#'.$constname.'_multi").val(newval);'."\r\n"
+				.'})'."\r\n"
+				.'</script>';
 			} elseif (preg_match('/emailtemplate:/', $val['type'])) {
 				include_once DOL_DOCUMENT_ROOT . '/core/class/html.formmail.class.php';
 				$formmail = new FormMail($db);
@@ -315,6 +327,12 @@ if ($action == 'edit') {
 				} elseif ($val['type'] == 'array') {
 					if($conf->global->{$constname} && isset($val['list'][$conf->global->{$constname}])) {
 						echo $langs->trans($val['list'][$conf->global->{$constname}]);
+					}
+				} elseif ($val['type'] == 'multiarray') {
+					if($conf->global->{$constname}) {
+						foreach(explode(',', $conf->global->{$constname}) as $key) {
+							echo $langs->trans($val['list'][$key]).'<br />';
+						}
 					}
 				} elseif (preg_match('/emailtemplate:/', $val['type'])) {
 					include_once DOL_DOCUMENT_ROOT . '/core/class/html.formmail.class.php';

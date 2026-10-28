@@ -16,3 +16,8 @@ Basic helper classes :
 New helper classes :
 * mmi_prices : helpers to display prices
 * mmi_stats : helpers for basic statistics : Median, Quartile, etc.
+
+# 1.2
+
+New setup option :
+* multiarray : possibility to select multiple options from a list
