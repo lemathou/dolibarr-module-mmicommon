@@ -71,7 +71,6 @@ class MMI_PrestasyncApi_1_0 extends DolibarrApi
 			$user = new User($db);
 		$user->fetch($user_id);
 		$user->getrights();
-		//var_dump($user); die();
 		return $user;
 	}
 }

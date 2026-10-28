@@ -115,7 +115,6 @@ abstract class MMI_Delayed_1_1 extends MMI_Singleton_1_0
 			$this->db = new DoliDBMysqli('mysql', static::$_db_params['host'], static::$_db_params['user'], static::$_db_params['pass'], static::$_db_params['name']);
 		if (empty($db))
 			$db = $this->db;
-		//var_dump($this->db); die();
 	}
 
 	/* Méthodes publiques */
