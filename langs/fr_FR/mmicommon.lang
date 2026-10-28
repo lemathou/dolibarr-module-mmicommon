@@ -41,3 +41,6 @@ About = A propos
 MMICommonAbout = A propos de MMI Common
 MMICommonAboutPage = A propos du module MMI Common
 MMICORE_MERGE_THIRDPARTY_BUYPRICE_TRIGGERS = Fusion de tiers : déclencher les triggers sur les prix d'achat déplacés (met à jour le fournisseur par défaut des produits et notifie la synchro ; refuse la fusion en cas de réf fournisseur en double)
+MAIN_MAIL_SMS_FROM=Numéro de téléphone par défaut pour envoi Sms
+MAIN_MAIL_SMS_INTL_PREFIX_DEFAULT=Préfix par défaut pour envoi SMS
+ToggleExtrafields=Afficher / Masquer les champs supplémentaires
