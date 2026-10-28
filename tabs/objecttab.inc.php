@@ -51,7 +51,6 @@ if ($user->socid) {
 	$socid = $user->socid;
 }
 
-//var_dump($user->rights);
 if ($elementtype == 'propal') {
 	require_once DOL_DOCUMENT_ROOT.'/core/lib/propal.lib.php';
 	require_once DOL_DOCUMENT_ROOT.'/comm/propal/class/propal.class.php';

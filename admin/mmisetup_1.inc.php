@@ -219,7 +219,6 @@ if ($action == 'edit') {
 				$arrayofmessagename = array();
 				if (is_array($formmail->lines_model)) {
 					foreach ($formmail->lines_model as $modelmail) {
-						//var_dump($modelmail);
 						$moreonlabel = '';
 						if (!empty($arrayofmessagename[$modelmail->label])) {
 							$moreonlabel = ' <span class="opacitymedium">(' . $langs->trans("SeveralLangugeVariatFound") . ')</span>';
