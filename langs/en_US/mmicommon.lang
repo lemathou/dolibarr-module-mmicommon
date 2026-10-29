@@ -40,3 +40,7 @@ MAIN_USE_XML_TAGS = Utiliser des balises XML (<br /> au lieu de <br > par exempl
 About = About
 MMICommonAbout = About MMICommon
 MMICommonAboutPage = MMICommon about page
+MMISetupLeaveEmptyToKeep=Leave empty to keep the current value
+MMISetupEnterValue=Enter a value
+MMISetupShow=Reveal
+MMISetupHide=Hide

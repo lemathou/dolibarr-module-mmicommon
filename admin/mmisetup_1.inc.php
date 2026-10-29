@@ -23,6 +23,7 @@ dol_include_once('mmicommon/lib/mmi_1.lib.php');
 
 // Translations
 $langs->loadLangs(array("admin", $modulecontext));
+$langs->load("mmicommon@mmicommon");
 
 // Parameters
 $action = GETPOST('action', 'aZ09');
@@ -38,9 +39,36 @@ $setupnotempty = 0;
 
 $dirmodels = array_merge(array('/'), (array) $conf->modules_parts['models']);
 
+// Normalise les parametres sans 'type' (evite les warnings PHP 8 au rendu).
+if (!empty($arrayofparameters) && is_array($arrayofparameters)) {
+	foreach ($arrayofparameters as $k => $v) {
+		if (!isset($arrayofparameters[$k]['type'])) {
+			$arrayofparameters[$k]['type'] = '';
+		}
+	}
+}
+
 /*
  * Actions
  */
+
+// Secrets (securekey) : ne jamais ecraser une valeur par du vide, et ne pas
+// passer par le sanitizer du core (GETPOST 'alpha' supprime - _ . etc.).
+if ($action == 'update' && !empty($arrayofparameters) && is_array($arrayofparameters) && !empty($user->admin)) {
+	foreach ($arrayofparameters as $constname => $val) {
+		if ($val['type'] != 'securekey') {
+			continue;
+		}
+		$newvalue = isset($_POST[$constname]) ? trim((string) $_POST[$constname]) : '';
+		if ($newvalue !== '') {
+			$res = dolibarr_set_const($db, $constname, $newvalue, 'chaine', 0, '', $conf->entity);
+			if (!($res > 0)) {
+				$error++;
+			}
+		}
+		unset($_POST[$constname], $_GET[$constname], $_REQUEST[$constname]);
+	}
+}
 
  if ((float) DOL_VERSION >= 6) {
 	include DOL_DOCUMENT_ROOT.'/core/actions_setmoduleoptions.inc.php';
@@ -241,23 +269,41 @@ if ($action == 'edit') {
 				$formcompany = new FormCompany($db);
 				print $formcompany->selectProspectCustomerType($conf->global->{$constname}, $constname);
 			} elseif ($val['type'] == 'securekey') {
-				print '<input required="required" type="text" class="flat" id="'.$constname.'" name="'.$constname.'" value="'.(GETPOST($constname, 'alpha') ?GETPOST($constname, 'alpha') : $conf->global->{$constname}).'" size="40">';
-				if (!empty($conf->use_javascript_ajax)) {
-					print '&nbsp;'.img_picto($langs->trans('Generate'), 'refresh', 'id="generate_token'.$constname.'" class="linkobject"');
+				$is_set = !empty($conf->global->{$constname});
+				$posted = GETPOST($constname, 'none');
+				$placeholder = $is_set ? $langs->trans("MMISetupLeaveEmptyToKeep") : $langs->trans("MMISetupEnterValue");
+				print '<input type="password" class="flat" id="'.$constname.'" name="'.$constname.'" value="'.dol_escape_htmltag($posted).'" size="40" autocomplete="new-password" placeholder="'.dol_escape_htmltag($placeholder).'">';
+				if ($is_set) {
+					print ' <a href="#" class="butAction" id="reveal'.$constname.'" data-const="'.dol_escape_htmltag($constname).'" data-url="'.dol_escape_htmltag(dol_buildpath('/mmicommon/ajax/getconst.php', 1)).'" data-token="'.newToken().'" data-show="'.dol_escape_htmltag($langs->trans("MMISetupShow")).'" data-hide="'.dol_escape_htmltag($langs->trans("MMISetupHide")).'">'.$langs->trans("MMISetupShow").'</a>';
 				}
 				if (!empty($conf->use_javascript_ajax)) {
-					print "\n".'<script type="text/javascript">';
+					print '&nbsp;'.img_picto($langs->trans('Generate'), 'refresh', 'id="generate_token'.$constname.'" class="linkobject"');
+					print "
+".'<script type="text/javascript">';
 					print '$(document).ready(function () {
-                        $("#generate_token'.$constname.'").click(function() {
-                	        $.get( "'.DOL_URL_ROOT.'/core/ajax/security.php", {
-                		      action: \'getrandompassword\',
-                		      generic: true
-    				        },
-    				        function(token) {
-    					       $("#'.$constname.'").val(token);
-            				});
-                         });
-                    });';
+						$("#generate_token'.$constname.'").click(function() {
+							$.get("'.DOL_URL_ROOT.'/core/ajax/security.php", {action: "getrandompassword", generic: true}, function(token) {
+								$("#'.$constname.'").val(token);
+							});
+						});
+						$("#reveal'.$constname.'").click(function(e) {
+							e.preventDefault();
+							var a = $(this), i = $("#'.$constname.'");
+							if (a.data("shown")) {
+								i.attr("type", "password").val("");
+								a.data("shown", false).text(a.data("show"));
+								return;
+							}
+							$.getJSON(a.data("url"), {name: a.data("const"), token: a.data("token")}, function(r) {
+								if (r && typeof r.value !== "undefined") {
+									i.attr("type", "text").val(r.value);
+									a.data("shown", true).text(a.data("hide"));
+								} else {
+									$.jnotify((r && r.error) ? r.error : "Error", "error");
+								}
+							});
+						});
+					});';
 					print '</script>';
 				}
 			} elseif ($val['type'] == 'product') {

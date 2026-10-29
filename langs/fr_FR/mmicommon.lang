@@ -44,3 +44,7 @@ MMICORE_MERGE_THIRDPARTY_BUYPRICE_TRIGGERS = Fusion de tiers : déclencher les t
 MAIN_MAIL_SMS_FROM=Numéro de téléphone par défaut pour envoi Sms
 MAIN_MAIL_SMS_INTL_PREFIX_DEFAULT=Préfix par défaut pour envoi SMS
 ToggleExtrafields=Afficher / Masquer les champs supplémentaires
+MMISetupLeaveEmptyToKeep=Laisser vide pour conserver la valeur actuelle
+MMISetupEnterValue=Saisir une valeur
+MMISetupShow=Révéler
+MMISetupHide=Masquer
