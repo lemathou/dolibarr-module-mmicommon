@@ -44,3 +44,4 @@ MMISetupLeaveEmptyToKeep=Leave empty to keep the current value
 MMISetupEnterValue=Enter a value
 MMISetupShow=Reveal
 MMISetupHide=Hide
+MMICommonDescription=Common MMI base: configuration, dashboards, helpers and utility classes.

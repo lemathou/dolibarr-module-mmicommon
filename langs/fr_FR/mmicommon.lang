@@ -48,3 +48,4 @@ MMISetupLeaveEmptyToKeep=Laisser vide pour conserver la valeur actuelle
 MMISetupEnterValue=Saisir une valeur
 MMISetupShow=Révéler
 MMISetupHide=Masquer
+MMICommonDescription=Socle commun des modules MMI : configuration, accueils, helpers et classes utilitaires.
