@@ -1,86 +1,77 @@
-# MMICOMMON FOR [DOLIBARR ERP CRM](https://www.dolibarr.org)
+# MMICommon — Socle commun des modules MMI : configuration, pages d'accueil, helpers et classes utilitaires.
 
-## Features
+> Module Dolibarr **MMICommon** (version 1.2), branche `20.0`.
 
-Description of the module...
+## Fonctionnalités
 
-<!--
-![Screenshot mmicommon](img/screenshot_mmicommon.png?raw=true "MMICommon"){imgmd}
--->
+### Fonctionnalités principales
 
-Other external modules are available on [Dolistore.com](https://www.dolistore.com).
+- Renderer de configuration partagé `admin/mmisetup_1.inc.php` : champs `securekey` masqués, bouton « Révéler » (RM3580), sauvegarde sûre.
+- Page « à propos » commune (`admin/mmiabout_1.inc.php`) et template de module (`inc/tpl/module.tpl.php`).
+- Pages d'accueil MMI (`lib/mmi_home.lib.php` : MMIHomeHeader/Footer/Links/Block), utilisées par mmipayments, mmishipping et mmiyounited.
+- Classes utilitaires : prix (`mmi_prices`), dates (`mmi_date`), statistiques (`mmi_stats`), singleton, générique, actions, API PrestaSync.
+- Triggers communs (`MMITriggers`), onglets produit/projet, actions de commentaires.
+- Helpers `lib/mmi_1.lib.php` et `lib/mmicommon.lib.php`.
+- Dépendance obligatoire de tous les modules MMI.
 
-## Translations
+### Pages
 
-Translations can be completed manually by editing files into directories *langs*.
+- `admin/about.php`
+- `admin/setup.php`
 
-<!--
-This module contains also a sample configuration for Transifex, under the hidden directory [.tx](.tx), so it is possible to manage translation using this service.
+### Configuration
 
-For more informations, see the [translator's documentation](https://wiki.dolibarr.org/index.php/Translator_documentation).
+| Constante | Type | Rôle |
+|---|---|---|
+| `MMICORE_UPDATE_NOTE_TRIGGER_UPDATE` | yesno | Déclencher le trigger de mise à jour de l'objet lorsqu'on met à jour une note |
+| `MMICORE_UPDATE_NOTE_TRIGGER_UPDATE_LIST` | textarea | Liste des types d'objet sur lesquels on déclenche le trigger en cas de mise à jour de note (un par ligne) |
+| `MMICORE_SHOW_PICTO_NOTE` | yesno | Afficher un picto warning sur les liens client si on a une note privée, et l'afficher dans la popup |
+| `MMICORE_SHOW_PICTO_NOTE_COLOR` | text | Couleur du picto warning (#999 par défaut) |
+| `MMICORE_MERGE_THIRDPARTY_BUYPRICE_TRIGGERS` | yesno | Fusion de tiers : déclencher les triggers sur les prix d'achat déplacés (met à jour le fournisseur par défaut des produits et notifie la synchro ; refuse la fusion en cas de réf fournisseur en double) |
+| `MAIN_USE_XML_TAGS` | yesno | Utiliser des balises XML (<br /> au lieu de <br > par exemple) |
 
-There is a [Transifex project](https://transifex.com/projects/p/dolibarr-module-template) for this module.
--->
+### Triggers
 
-<!--
+- `core/triggers/MMITriggers.class.php`
+
+### Classes et composants
+
+- `class/mmi_actions.class.php`
+- `class/mmi_common.class.php`
+- `class/mmi_date.class.php`
+- `class/mmi_delayed.class.php`
+- `class/mmi_generic.class.php`
+- `class/mmi_prestasyncapi.class.php`
+- `class/mmi_prices.class.php`
+- `class/mmi_singleton.class.php`
+- `class/mmi_singleton.trait.php`
+- `class/mmi_stats.class.php`
+- `inc/tpl/module.tpl.php`
+- `inc/tpl/moduleindex.tpl.php`
+- `lib/mmi_1.lib.php`
+- `lib/mmi_home.lib.php`
+- `lib/mmicommon.lib.php`
+
+## Prérequis
+
+- Dolibarr >= 11.0 (branche `20.0` : Dolibarr 20.0).
 
 ## Installation
 
-### From the ZIP file and GUI interface
+1. Copier le module dans `htdocs/custom/mmicommon` :
 
-- If you get the module in a zip file (like when downloading it from the market place [Dolistore](https://www.dolistore.com)), go into
-menu ```Home - Setup - Modules - Deploy external module``` and upload the zip file.
+   ```sh
+   cd htdocs/custom
+   git clone <dépôt> mmicommon
+   ```
 
-Note: If this screen tell you there is no custom directory, check your setup is correct:
+2. Dans Dolibarr : **Configuration → Modules**, activer d'abord `mmicommon`, puis ce module.
+3. Vérifier les permissions dans la fiche des utilisateurs concernés.
 
-- In your Dolibarr installation directory, edit the ```htdocs/conf/conf.php``` file and check that following lines are not commented:
+## Licence
 
-    ```php
-    //$dolibarr_main_url_root_alt ...
-    //$dolibarr_main_document_root_alt ...
-    ```
+GPLv3 ou ultérieure — voir `COPYING`. Documentation sous GFDL.
 
-- Uncomment them if necessary (delete the leading ```//```) and assign a sensible value according to your Dolibarr installation
+## Changelog
 
-    For example :
-
-    - UNIX:
-        ```php
-        $dolibarr_main_url_root_alt = '/custom';
-        $dolibarr_main_document_root_alt = '/var/www/Dolibarr/htdocs/custom';
-        ```
-
-    - Windows:
-        ```php
-        $dolibarr_main_url_root_alt = '/custom';
-        $dolibarr_main_document_root_alt = 'C:/My Web Sites/Dolibarr/htdocs/custom';
-        ```
-
-### From a GIT repository
-
-- Clone the repository in ```$dolibarr_main_document_root_alt/mmicommon```
-
-```sh
-cd ....../custom
-git clone git@github.com:gitlogin/mmicommon.git mmicommon
-```
-
-### <a name="final_steps"></a>Final steps
-
-From your browser:
-
-  - Log into Dolibarr as a super-administrator
-  - Go to "Setup" -> "Modules"
-  - You should now be able to find and enable the module
-
--->
-
-## Licenses
-
-### Main code
-
-GPLv3 or (at your option) any later version. See file COPYING for more information.
-
-### Documentation
-
-All texts and readmes are licensed under GFDL.
+Voir [CHANGELOG.md](CHANGELOG.md) (évolutions datées).
