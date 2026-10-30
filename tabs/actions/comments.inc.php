@@ -13,7 +13,6 @@ $action = GETPOST('action', 'aZ09');
 $confirm = GETPOST('confirm', 'alpha');
 $withproject = GETPOST('withproject', 'int');
 
-//var_dump($object);
 
 $object->fetchComments();
 
